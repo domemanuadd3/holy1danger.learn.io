@@ -223,6 +223,7 @@
         .btn-answer {
             background: linear-gradient(135deg, #ff6b6b, #ffd93d);
             margin-right: 15px;
+            margin-top: 15px;
         }
         
         .btn-next {
