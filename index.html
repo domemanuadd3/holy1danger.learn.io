@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เรียนคำศัพท์ภาษาอังกฤษ 24 ชม.</title>
+    <script src="https://cdn.jsdelivr.com/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="js.js"></script>
+   <!-- <style>
+        @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            font-size: 0.9em;
+            color: #666;
+            height: auto;
+            width: 100%;
+        }
+        footer span {
+            font-size: 0.9em;
+            color: #c7c7c7;
+        }
+        
+        body {
+            font-family: 'Prompt', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 10px;
+        }
+        
+        .timer-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto 10px;
+        }
+        
+        .timer {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 12px 18px;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .timer-text {
+            font-weight: 600;
+            color: #494949;
+            font-size: 1em;
+        }
+        
+        #resetTimerBtn {
+            padding: 6px 15px;
+            font-size: 0.85em;
+            margin-left: 10px;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #ff6b6b, #ffd93d);
+            padding: 30px;
+            text-align: center;
+            color: white;
+            width: 100%;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .stats-bar {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px 30px;
+            display: none; /* ซ่อนไว้ตั้งแต่แรก */
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(5px);
+            width: 100%;
+            max-width: 500px; /* จำกัดความกว้างสูงสุด */
+            margin: 20px auto; /* จัดให้อยู่ตรงกลาง */
+            border-radius: 15px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .main-content {
+            padding: 40px;
+            width: 100%;
+        }
+        
+        .word-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+        }
+        
+        .word-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .word-english {
+            font-family: 'Inter', sans-serif;
+            font-size: 3em;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .word-pronunciation {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        
+        .answer-section {
+            margin-top: 20px;
+        }
+        
+        .answer-content {
+            display: none;
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 20px;
+            text-align: left;
+        }
+        
+        .thai-meaning {
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .usage-section h4 {
+            color: #555;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .usage-example {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 4px solid #ff6b6b;
+        }
+        
+        .example-en {
+            font-family: 'Inter', sans-serif;
+            color: #333;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .example-th {
+            color: #666;
+            font-size: 0.95em;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn-answer {
+            background: linear-gradient(135deg, #ff6b6b, #ffd93d);
+            margin-right: 15px;
+        }
+        
+        .btn-next {
+            background: linear-gradient(135deg, #4ecdc4, #44a08d);
+        }
+
+        .option-btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 1em;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            background-color: #f7f7f7;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: 'Prompt', sans-serif;
+        }
+
+        .option-btn:hover {
+            background-color: #e9e9e9;
+            transform: scale(1.02);
+        }
+
+        .btn-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .progress-bar {
+            background: rgba(0, 0, 0, 0.1);
+            height: 8px;
+            border-radius: 4px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(135deg, #ff6b6b, #ffd93d);
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+        
+        .completed-message {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+        
+        .completed-message h2 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 2em;
+        }
+        
+        .completed-message p {
+            color: #666;
+            font-size: 1.2em;
+        }
+
+        .continue-message {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                border-radius: 10px;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+            .header h1 {
+                font-size: 1.8em;
+            }
+            .header .subtitle {
+                font-size: 1em;
+            }
+            
+            .word-card {
+                padding: 20px;
+            }
+            .word-english {
+                font-size: 2em;
+            }
+            .word-pronunciation {
+                font-size: 1em;
+            }
+            .main-content {
+                padding: 20px;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 1em;
+            }
+            
+            .stats-bar {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+                padding: 10px 20px;
+            }
+
+            .stat-number {
+                font-size: 1.5em;
+            }
+            .stat-label {
+                font-size: 0.8em;
+            }
+            
+            .timer-container {
+                margin: 0 auto 10px;
+            }
+
+            .timer {
+                padding: 8px 12px;
+            }
+            
+            .timer-text {
+                font-size: 0.9em;
+            }
+            
+            #resetTimerBtn {
+                padding: 6px 12px;
+                font-size: 0.8em;
+            }
+
+            #startSection,
+            #continueSection {
+                padding: 20px;
+            }
+        }
+    </style> ย้ายไปcss -->
+    <link rel="shortcut icon" href="ico.ico" type="image/x-icon">
+</head>
+<body onload="checkProgressOnLoad()">
+    <div class="timer-container">
+        <div class="timer">
+            <div style="flex-grow: 1; text-align: center;">
+                <div class="timer-text" id="timer"></div>
+            </div>
+            <!--<button class="btn" id="resetTimerBtn" onclick="resetProgress()">
+                🔄 เริ่มใหม่
+            </button>?  > ซ่อนปุ่มเริ่มใหม่ไว้ก่อน -->
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>🎯 เรียนคำศัพท์ภาษาอังกฤษ</h1>
+            <p class="subtitle">Oxford 3000 Words - เรียนรู้ 10 คำใหม่ ในทุก 12 ชั่วโมง</p>
+        </div>
+        
+        <div id="startSection" style="text-align:center; padding: 50px;">
+            <p style="font-size: 1.2em; margin-bottom: 20px;">กดปุ่มด้านล่างเพื่อเริ่มเรียนคำศัพท์ใหม่วันนี้!</p>
+            <button class="btn" id="startButton" onclick="startApp()">
+                🚀 เริ่มเรียนคำศัพท์
+            </button>
+        </div>
+
+        <div id="continueSection" class="continue-message">
+            <h2>ยินดีต้อนรับกลับ!</h2>
+            <p id="continueMessage"></p>
+            <button class="btn" onclick="continueApp()" style="margin-top: 20px;">
+                ➡️ ดำเนินการต่อ
+            </button>
+        </div>
+
+        <div id="appContent" style="width:100%; display:none;">
+    
+            <div class="main-content">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+    
+                <div class="word-card" id="wordCard">
+                    <div class="word-english" id="wordEnglish">กำลังโหลด...</div>
+                    <div class="word-pronunciation" id="wordPronunciation"></div>
+                    
+                    <div class="answer-section">
+                        <div class="btn-options" id="optionsContainer"></div>
+    
+                        <button class="btn btn-answer" id="showAnswerBtn" onclick="showAnswer()">
+                            🔍 ดูเฉลย
+                        </button>
+                        <button class="btn btn-next" id="nextWordBtn" onclick="nextWord()" style="display:none;">
+                            ➡️ คำถัดไป
+                        </button>
+                    </div>
+    
+                    <div class="answer-content" id="answerContent">
+                        <div class="thai-meaning" id="thaiMeaning"></div>
+                    </div>
+                </div>
+    
+                <div class="completed-message" id="completedMessage">
+                    <h2>🎉 ยินดีด้วย!</h2>
+                    <p id="scoreMessage"></p>
+                    <p>กลับมาเรียนใหม่ ในตอนหลังเที่ยงวัน หรือ หลังเที่ยงคืน</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--<script>
+        let currentWordIndex = 0;
+        let completedWordsCount = 0;
+        let dailyWords = [];
+        let isAnswered = false;
+        let allWords = [];
+        let correctAnswers = 0;
+        let timerInterval;
+
+        // ฟังก์ชันสร้างรหัสรอบการเรียนรู้ (ใช้สำหรับเช็คเที่ยงวัน/เที่ยงคืน)
+        function getCycleId() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = (now.getMonth() + 1).toString().padStart(2, '0');
+            const day = now.getDate().toString().padStart(2, '0');
+            const cycle = now.getHours() >= 12 ? 'PM' : 'AM';
+            return `${year}-${month}-${day}-${cycle}`;
+        }
+
+        // ฟังก์ชันตรวจสอบความคืบหน้าเมื่อโหลดหน้าเว็บ
+        async function checkProgressOnLoad() {
+            const currentCycleId = getCycleId();
+            const savedData = JSON.parse(localStorage.getItem('dailyWordsData') || '{}');
+
+            await fetchAllWords();
+
+            if (savedData.cycleId === currentCycleId && savedData.words) {
+                dailyWords = savedData.words;
+                completedWordsCount = savedData.completed || 0;
+                correctAnswers = savedData.score || 0;
+                currentWordIndex = completedWordsCount;
+
+                if (completedWordsCount >= 10) {
+                    hideAllSections();
+                    document.getElementById('appContent').style.display = 'block';
+                    updateProgressAndScore();
+                } else {
+                    hideAllSections();
+                    document.getElementById('continueSection').style.display = 'block';
+                    document.getElementById('continueMessage').textContent =
+                        `คุณทำไปแล้ว ${completedWordsCount} คำ จาก 10 คำ และทำคะแนนได้ ${correctAnswers} คะแนน`;
+                }
+            } else {
+                // ผู้ใช้ใหม่หรือรอบใหม่
+                hideAllSections();
+                document.getElementById('startSection').style.display = 'block';
+            }
+            updateTimer();
+            timerInterval = setInterval(updateTimer, 1000);
+        }
+
+        // ฟังก์ชันซ่อนหน้าจอทั้งหมด
+        function hideAllSections() {
+            document.getElementById('startSection').style.display = 'none';
+            document.getElementById('continueSection').style.display = 'none';
+            document.getElementById('appContent').style.display = 'none';
+        }
+
+        // ฟังก์ชันโหลดข้อมูลคำศัพท์ทั้งหมดจากไฟล์ Word.json
+        async function fetchAllWords() {
+            try {
+                const response = await fetch('Word.json');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                
+                if (!data.words || !Array.isArray(data.words)) {
+                    throw new Error('Invalid JSON format: "words" key not found or is not an array.');
+                }
+                
+                allWords = data.words;
+            } catch (error) {
+                console.error('Error fetching words:', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'เกิดข้อผิดพลาดในการโหลดไฟล์!',
+                    html: `ไม่สามารถโหลดหรืออ่านไฟล์ ` + '`Word.json`' + ` ได้<br>โปรดตรวจสอบว่าไฟล์มีรูปแบบถูกต้อง`,
+                    confirmButtonText: 'ตกลง'
+                });
+            }
+        }
+        
+        // ฟังก์ชันเริ่มการทำงานของแอปทั้งหมด (สำหรับผู้ใช้ใหม่)
+        async function startApp() {
+            hideAllSections();
+            document.getElementById('appContent').style.display = 'block';
+            
+            await generateDailyWords();
+            displayCurrentWord();
+        }
+
+        // ฟังก์ชันดำเนินการต่อ (สำหรับผู้ใช้ที่ทำค้างไว้)
+        function continueApp() {
+            hideAllSections();
+            document.getElementById('appContent').style.display = 'block';
+            
+            currentWordIndex = completedWordsCount;
+            displayCurrentWord();
+        }
+        
+        // ฟังก์ชันสุ่ม 10 คำจากข้อมูลทั้งหมด
+        function getRandomWords(allWordsList) {
+            const selected = [];
+            const wordsCopy = [...allWordsList];
+            while (selected.length < 10 && wordsCopy.length > 0) {
+                const idx = Math.floor(Math.random() * wordsCopy.length);
+                selected.push(wordsCopy[idx]);
+                wordsCopy.splice(idx, 1);
+            }
+            return selected;
+        }
+        
+        // ฟังก์ชันสุ่มคำแปลที่ไม่ถูกต้อง 3 คำ
+        function getIncorrectMeanings(correctMeaning) {
+            const allMeanings = allWords.map(word => word.meaning);
+            
+            const incorrectMeaningPool = allMeanings.filter(meaning => meaning !== correctMeaning);
+            incorrectMeaningPool.sort(() => Math.random() - 0.5);
+
+            return incorrectMeaningPool.slice(0, 3);
+        }
+
+        // ฟังก์ชันดึงคำศัพท์ 10 คำ
+        async function generateDailyWords() {
+            const currentCycleId = getCycleId();
+            dailyWords = getRandomWords(allWords);
+            completedWordsCount = 0;
+            correctAnswers = 0;
+            localStorage.setItem('dailyWordsData', JSON.stringify({
+                cycleId: currentCycleId,
+                words: dailyWords,
+                completed: 0,
+                score: 0
+            }));
+        }
+        
+        // ฟังก์ชันอัปเดตเวลา
+        function updateTimer() {
+            const now = new Date();
+            let nextResetTime = new Date(now);
+
+            if (now.getHours() < 12) {
+                nextResetTime.setHours(12, 0, 0, 0);
+            } else {
+                nextResetTime.setHours(24, 0, 0, 0);
+            }
+
+            const timeLeft = nextResetTime - now;
+            const hours = Math.floor(timeLeft / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            document.getElementById('timer').textContent =
+                `รอบใหม่ใน ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                checkProgressOnLoad();
+            }
+        }
+
+        // ฟังก์ชันแสดงคำศัพท์และตัวเลือก
+        function displayCurrentWord() {
+            if (completedWordsCount >= 10) {
+                updateProgressAndScore();
+                return;
+            }
+            
+            const word = dailyWords[currentWordIndex];
+            if (!word) {
+                document.getElementById('wordEnglish').textContent = 'ไม่พบข้อมูลคำศัพท์';
+                return;
+            }
+
+            document.getElementById('wordEnglish').textContent = word.word;
+            document.getElementById('wordPronunciation').textContent = `[${word.pronunciation}]`;
+            
+            const correctMeaning = word.meaning;
+            const incorrectMeanings = getIncorrectMeanings(correctMeaning);
+            const allOptions = [...incorrectMeanings, correctMeaning].sort(() => Math.random() - 0.5);
+
+            const optionsContainer = document.getElementById('optionsContainer');
+            optionsContainer.innerHTML = '';
+            allOptions.forEach(option => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.textContent = option;
+                btn.onclick = () => checkAnswer(option);
+                optionsContainer.appendChild(btn);
+            });
+
+            document.getElementById('showAnswerBtn').style.display = 'inline-block';
+            document.getElementById('nextWordBtn').style.display = 'none';
+            document.getElementById('answerContent').style.display = 'none';
+            isAnswered = false;
+
+            const progress = (completedWordsCount / 10) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+
+        // ฟังก์ชันตรวจสอบคำตอบ
+        function checkAnswer(selectedMeaning) {
+            if (isAnswered) return;
+            isAnswered = true;
+            
+            const currentWord = dailyWords[currentWordIndex];
+            const correctWord = currentWord.word;
+            const correctMeaning = currentWord.meaning;
+            
+            const isCorrect = (selectedMeaning === correctMeaning);
+            if (isCorrect) {
+                correctAnswers++;
+            }
+            
+            Swal.fire({
+                icon: isCorrect ? 'success' : 'error',
+                title: isCorrect ? 'ถูกต้อง!' : 'ผิด!',
+                html: `คำตอบที่ถูกต้องคือ <b>${correctWord}</b> แปลว่า "${correctMeaning}"`,
+                confirmButtonText: 'ตกลง'
+            }).then(() => {
+                nextWord();
+            });
+        }
+
+        // ฟังก์ชันแสดงเฉลย
+        function showAnswer() {
+            const currentWord = dailyWords[currentWordIndex];
+            const correctWord = currentWord.word;
+            const correctMeaning = currentWord.meaning;
+            
+            Swal.fire({
+                icon: 'info',
+                title: 'คำตอบที่ถูกต้องคือ...',
+                html: `คำตอบคือ <b>${correctWord}</b> แปลว่า "${correctMeaning}"`,
+                confirmButtonText: 'ตกลง'
+            }).then(() => {
+                nextWord();
+            });
+        }
+
+        // ฟังก์ชันไปคำถัดไป
+        function nextWord() {
+            completedWordsCount++;
+            currentWordIndex = (currentWordIndex + 1);
+            
+            const currentCycleId = getCycleId();
+            localStorage.setItem('dailyWordsData', JSON.stringify({
+                cycleId: currentCycleId,
+                words: dailyWords,
+                completed: completedWordsCount,
+                score: correctAnswers
+            }));
+            
+            displayCurrentWord();
+        }
+        
+        // ฟังก์ชันอัปเดตความคืบหน้าและคะแนนเมื่อเรียนจบ
+        function updateProgressAndScore() {
+            document.getElementById('progressFill').style.width = '100%';
+            
+            document.getElementById('wordCard').style.display = 'none';
+            document.getElementById('completedMessage').style.display = 'block';
+            document.getElementById('scoreMessage').textContent = `คุณทำคะแนนได้ ${correctAnswers} จาก 10 คำ!`;
+        }
+        
+        // ฟังก์ชันรีเซ็ตความคืบหน้าในรอบปัจจุบัน (ปุ่มเริ่มใหม่)
+        function resetProgress() {
+            localStorage.removeItem('dailyWordsData');
+            location.reload(); // โหลดหน้าใหม่เพื่อให้ทุกอย่างกลับไปที่สถานะเริ่มต้น
+        }
+    </script> -- ซ่อนสคริปต์ไว้ก่อน -->
+    <footer><span>ถูกพัฒนาขึ้นโดย Holy1Danger และได้รับคำแนะนำจาก Gemini</span></footer>
+</body>
+</html>
