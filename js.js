@@ -1,4 +1,4 @@
-  let currentWordIndex = 0;
+        let currentWordIndex = 0;
         let completedWordsCount = 0;
         let dailyWords = [];
         let isAnswered = false;
@@ -8,13 +8,21 @@
 
         // ฟังก์ชันสร้างรหัสรอบการเรียนรู้ (ใช้สำหรับเช็คเที่ยงวัน/เที่ยงคืน)
         function getCycleId() {
-            const now = new Date();
-            const year = now.getFullYear();
-            const month = (now.getMonth() + 1).toString().padStart(2, '0');
-            const day = now.getDate().toString().padStart(2, '0');
-            const cycle = now.getHours() >= 12 ? 'PM' : 'AM';
-            return `${year}-${month}-${day}-${cycle}`;
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = (now.getMonth() + 1).toString().padStart(2, '0');
+        const day = now.getDate().toString().padStart(2, '0');
+        const hour = now.getHours();
+        
+        let cycle;
+        if (hour >= 6 && hour < 18) {
+            cycle = 'AM';  // 06:00 - 17:59
+        } else {
+            cycle = 'PM';  // 18:00 - 05:59
         }
+        
+        return `${year}-${month}-${day}-${cycle}`;
+    }
 
         // ฟังก์ชันตรวจสอบความคืบหน้าเมื่อโหลดหน้าเว็บ
         async function checkProgressOnLoad() {
@@ -136,28 +144,34 @@
         
         // ฟังก์ชันอัปเดตเวลา
         function updateTimer() {
-            const now = new Date();
-            let nextResetTime = new Date(now);
-
-            if (now.getHours() < 12) {
-                nextResetTime.setHours(12, 0, 0, 0);
-            } else {
-                nextResetTime.setHours(24, 0, 0, 0);
-            }
-
-            const timeLeft = nextResetTime - now;
-            const hours = Math.floor(timeLeft / (1000 * 60 * 60));
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-            document.getElementById('timer').textContent =
-                `รอบใหม่ใน ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-            
-            if (timeLeft <= 0) {
-                clearInterval(timerInterval);
-                checkProgressOnLoad();
-            }
+        const now = new Date();
+        let nextResetTime = new Date(now);
+        
+        if (now.getHours() < 6) {
+            // ก่อน 6 โมงเช้า -> รีเซ็ตที่ 6 โมงเช้าวันนี้
+            nextResetTime.setHours(6, 0, 0, 0);
+        } else if (now.getHours() < 18) {
+            // 6 โมงเช้า - 5 โมงเย็น -> รีเซ็ตที่ 6 โมงเย็นวันนี้
+            nextResetTime.setHours(18, 0, 0, 0);
+        } else {
+            // หลัง 6 โมงเย็น -> รีเซ็ตที่ 6 โมงเช้าวันพรุ่งนี้
+            nextResetTime.setDate(nextResetTime.getDate() + 1);
+            nextResetTime.setHours(6, 0, 0, 0);
         }
+        
+        const timeLeft = nextResetTime - now;
+        const hours = Math.floor(timeLeft / (1000 * 60 * 60));
+        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+        
+        document.getElementById('timer').textContent =
+            `รอบใหม่ใน ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            checkProgressOnLoad();
+        }
+    }
 
         // ฟังก์ชันแสดงคำศัพท์และตัวเลือก
         function displayCurrentWord() {
