@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>เรียนคำศัพท์ภาษาอังกฤษ 24 ชม.</title>
-    <script src="https://cdn.jsdelivr.com/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="style.css">
-    <script src="js.js"></script>
+    
    <!-- <style>
         @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap');
         
@@ -389,9 +389,11 @@
             <div style="flex-grow: 1; text-align: center;">
                 <div class="timer-text" id="timer"></div>
             </div>
-            <!--<button class="btn" id="resetTimerBtn" onclick="resetProgress()">
+            <!--
+            <button class="btn" id="resetTimerBtn" onclick="resetProgress()">
                 🔄 เริ่มใหม่
-            </button>?  > ซ่อนปุ่มเริ่มใหม่ไว้ก่อน -->
+            </button>
+            !-->
         </div>
     </div>
 
@@ -428,8 +430,7 @@
                     <div class="word-pronunciation" id="wordPronunciation"></div>
                     
                     <div class="answer-section">
-                        <div class="btn-options" id="optionsContainer"></div>
-                            
+                        <div class="btn-options" id="optionsContainer"></div>       
                         <button class="btn btn-answer" id="showAnswerBtn" onclick="showAnswer()">
                             🔍 ดูเฉลย
                         </button>
@@ -723,7 +724,9 @@
             localStorage.removeItem('dailyWordsData');
             location.reload(); // โหลดหน้าใหม่เพื่อให้ทุกอย่างกลับไปที่สถานะเริ่มต้น
         }
-    </script> -- ซ่อนสคริปต์ไว้ก่อน -->
-    <footer><span>ถูกพัฒนาขึ้นโดย Holy1Danger และได้รับคำแนะนำจาก Gemini</span></footer>
+    </script> -- ซ่อนสคริปต์ไว้ก่อน !-->
+    <script src="js.js"></script>
+    <footer><span>ถ้าไม่สามารถใช้งานได้กรุณารอสักครู่เพราะใช้ CDN ในการ Alert<br>ถูกพัฒนาขึ้นโดย Holy1Danger และได้รับคำแนะนำจาก Gemini </span></footer>
+    
 </body>
 </html>
